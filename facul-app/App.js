@@ -20,7 +20,7 @@ export default function App() {
           onPress={() => Alert.alert('Se a lua toca no mar...')}
           />
           <MeuComponente style={styles.texto} />
-          <MinMax min='10' max='20' />
+          <MinMax min='50' max='50' />
       </ImageBackground>
 
     </View>
