@@ -1,6 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import { Alert, Button, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
+import MeuComponente from './components/MeuComponente';
+import MinMax from './components/MinMax';
 
 export default function App() {
   return (
@@ -8,17 +9,18 @@ export default function App() {
       <ImageBackground
       source={require('./assets/background.jpg')} style={styles.imageBackground}
       >
-            <Text style={styles.texto}>Seja bem-vindo (a)</Text>
+          <Text style={styles.texto}>Seja bem-vindo (a)</Text>
       <Image
             style={styles.image}
             source={require('./assets/lua.png')}
           />
-          <StatusBar style="auto" />
 
           <Button
           title="Clique aqui"
           onPress={() => Alert.alert('Se a lua toca no mar...')}
           />
+          <MeuComponente style={styles.texto} />
+          <MinMax min='10' max='20' />
       </ImageBackground>
 
     </View>
