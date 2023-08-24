@@ -1,7 +1,7 @@
 import { Alert, Button, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
-import MeuComponente from './components/MeuComponente';
-import MinMax from './components/MinMax';
+import MinMax from './components/Semana 01/MinMax';
+import NumeroAleatorio from './components/Semana 02/NumeroAleatorio';
 
 export default function App() {
   return (
@@ -19,8 +19,11 @@ export default function App() {
           title="Clique aqui"
           onPress={() => Alert.alert('Se a lua toca no mar...')}
           />
-          <MeuComponente style={styles.texto} />
+  
           <MinMax min='50' max='50' />
+          <MinMax min='40' max='30' />
+
+          <NumeroAleatorio min='10' max='40' />
       </ImageBackground>
 
     </View>

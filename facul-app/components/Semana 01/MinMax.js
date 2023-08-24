@@ -11,7 +11,6 @@ const MinMax = ({min, max}) => {
     
     <Text style={styles.texto}>O maior número é: {maiorNumero}</Text>
 
-
     </>
 
   )
