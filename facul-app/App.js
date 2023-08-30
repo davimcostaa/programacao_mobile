@@ -2,11 +2,13 @@ import { Alert, Button, ImageBackground, StyleSheet, Text, View } from 'react-na
 import { Image } from 'expo-image';
 import MinMax from './components/Semana 01/MinMax';
 import NumeroAleatorio from './components/Semana 02/NumeroAleatorio';
+import Contador from './components/Semana 02/Contador';
+import DigiteSeuNome from './components/Semana 02/DigiteSeuNome';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ImageBackground
+      {/* <ImageBackground
       source={require('./assets/background.jpg')} style={styles.imageBackground}
       >
           <Text style={styles.texto}>Seja bem-vindo (a)</Text>
@@ -21,11 +23,13 @@ export default function App() {
           />
   
           <MinMax min='50' max='50' />
-          <MinMax min='40' max='30' />
+          <MinMax min={30} max={40} />
 
-          <NumeroAleatorio min='10' max='40' />
-      </ImageBackground>
+          <NumeroAleatorio min={10} max={15} />
+      </ImageBackground> */}
 
+      <Contador />
+      <DigiteSeuNome/>
     </View>
   );
 }

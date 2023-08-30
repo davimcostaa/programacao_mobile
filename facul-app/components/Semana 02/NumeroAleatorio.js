@@ -6,7 +6,7 @@ export default function NumeroAleatorio({min, max}) {
     const [numeroAleatorio, setNumeroAleatorio] = useState('')
     
     const geraNumero = () => {
-      setNumeroAleatorio(parseInt(Math.random() * (max - min) + min))
+      setNumeroAleatorio(parseInt(Math.random() * (max - min + 1)) + min)
     }
 
     //const numeroAleatorio = parseInt(Math.random() * (max - min) + min)
