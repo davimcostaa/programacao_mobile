@@ -4,6 +4,8 @@ import MinMax from './components/Semana 01/MinMax';
 import NumeroAleatorio from './components/Semana 02/NumeroAleatorio';
 import Contador from './components/Semana 02/Contador';
 import DigiteSeuNome from './components/Semana 02/DigiteSeuNome';
+import Pai from './components/Semana 03/comunicacao-indireta/Pai';
+// import Pai from './components/Semana 03/comunicacao-direta/Pai';
 
 export default function App() {
   return (
@@ -27,9 +29,11 @@ export default function App() {
 
           <NumeroAleatorio min={10} max={15} />
       </ImageBackground> */}
-
+    {/* 
       <Contador />
-      <DigiteSeuNome/>
+      <DigiteSeuNome/> */}
+
+      <Pai />
     </View>
   );
 }
