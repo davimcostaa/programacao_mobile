@@ -5,6 +5,8 @@ import NumeroAleatorio from './components/Semana 02/NumeroAleatorio';
 import Contador from './components/Semana 02/Contador';
 import DigiteSeuNome from './components/Semana 02/DigiteSeuNome';
 import Pai from './components/Semana 03/comunicacao-indireta/Pai';
+import ParOuImpar from './components/Semana04/ParOuImpar';
+import IntroducaoEstilos from './components/Semana04/IntroducaoEstilos';
 // import Pai from './components/Semana 03/comunicacao-direta/Pai';
 
 export default function App() {
@@ -32,8 +34,9 @@ export default function App() {
     {/* 
       <Contador />
       <DigiteSeuNome/> */}
-
-      <Pai />
+{/* 
+      <ParOuImpar numero={10} /> */}
+      <IntroducaoEstilos />
     </View>
   );
 }
