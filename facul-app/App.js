@@ -7,37 +7,57 @@ import DigiteSeuNome from './components/Semana 02/DigiteSeuNome';
 import Pai from './components/Semana 03/comunicacao-indireta/Pai';
 import ParOuImpar from './components/Semana04/ParOuImpar';
 import IntroducaoEstilos from './components/Semana04/IntroducaoEstilos';
+import Profile from './components/Semana04/Profile';
+import Login from './components/Semana04/Login';
 // import Pai from './components/Semana 03/comunicacao-direta/Pai';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <ImageBackground
-      source={require('./assets/background.jpg')} style={styles.imageBackground}
-      >
-          <Text style={styles.texto}>Seja bem-vindo (a)</Text>
-      <Image
-            style={styles.image}
-            source={require('./assets/lua.png')}
-          />
+    // <View style={styles.container}>
+    //   {/* <ImageBackground
+    //   source={require('./assets/background.jpg')} style={styles.imageBackground}
+    //   >
+    //       <Text style={styles.texto}>Seja bem-vindo (a)</Text>
+    //   <Image
+    //         style={styles.image}
+    //         source={require('./assets/lua.png')}
+    //       />
 
-          <Button
-          title="Clique aqui"
-          onPress={() => Alert.alert('Se a lua toca no mar...')}
-          />
+    //       <Button
+    //       title="Clique aqui"
+    //       onPress={() => Alert.alert('Se a lua toca no mar...')}
+    //       />
   
-          <MinMax min='50' max='50' />
-          <MinMax min={30} max={40} />
+    //       <MinMax min='50' max='50' />
+    //       <MinMax min={30} max={40} />
 
-          <NumeroAleatorio min={10} max={15} />
-      </ImageBackground> */}
-    {/* 
-      <Contador />
-      <DigiteSeuNome/> */}
-{/* 
-      <ParOuImpar numero={10} /> */}
-      <IntroducaoEstilos />
-    </View>
+    //       <NumeroAleatorio min={10} max={15} />
+    //   </ImageBackground> */}
+    // {/* 
+    //   <Contador />
+    //   <DigiteSeuNome/> */}
+    // {/* 
+    //   <ParOuImpar numero={10} /> */}
+    //   {/* <IntroducaoEstilos /> */}
+
+    //   <Profile
+    //     imgUri='https://www.fakepersongenerator.com/Face/female/female20161024753601562.jpg'
+    //     genero='Feminino'
+    //     nome='Felicia J Ochoa'
+    //     email='aiyana1980@gmail.com'
+    //     telefone='630-337-6439'
+    // />
+
+    // </View>
+    // <Profile
+    //   imgUri='https://www.fakepersongenerator.com/Face/male/male20171084057929504.jpg'
+    //   genero='Masculino'
+    //   nome='FTheodore M Weidman'
+    //   email='niko2002@yahoo.com'
+    //   telefone='903-513-5297'
+    // />
+
+    <Login />
   );
 }
 
