@@ -1,14 +1,15 @@
-import { Alert, Button, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { Alert, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import MinMax from './components/Semana 01/MinMax';
 import NumeroAleatorio from './components/Semana 02/NumeroAleatorio';
 import Contador from './components/Semana 02/Contador';
 import DigiteSeuNome from './components/Semana 02/DigiteSeuNome';
 import Pai from './components/Semana 03/comunicacao-indireta/Pai';
-import ParOuImpar from './components/Semana04/ParOuImpar';
-import IntroducaoEstilos from './components/Semana04/IntroducaoEstilos';
-import Profile from './components/Semana04/Profile';
-import Login from './components/Semana04/Login';
+import ParOuImpar from './components/Semana 04/ParOuImpar';
+import IntroducaoEstilos from './components/Semana 04/IntroducaoEstilos';
+import Profile from './components/Semana 04/Profile';
+import Login from './components/Semana 04/Login';
+import { ActivityIndicator, Button, MD2Colors } from 'react-native-paper';
 // import Pai from './components/Semana 03/comunicacao-direta/Pai';
 
 export default function App() {
@@ -56,8 +57,15 @@ export default function App() {
     //   email='niko2002@yahoo.com'
     //   telefone='903-513-5297'
     // />
+    <>
+      <ActivityIndicator animating={true} color={MD2Colors.red200} size={'large'} style={{marginTop: 100}} />
 
-    <Login />
+      <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
+    Press me
+  </Button>
+    </>
+  
+ 
   );
 }
 
