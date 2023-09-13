@@ -1,35 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useFonts, Orbitron_400Regular } from '@expo-google-fonts/orbitron';
-import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  let timer = null; // Declare a timer variable
+  const [segundos, setSegundos] = useState(0);
+  const [minutos, setMinutos] = useState(0);
+  const [horas, setHoras] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [ultimosTempos, setUltimosTempos] = useState('');
+  let timer = null;
 
-  function iniciarCronometro() {
-    if (!timer) {
+  useEffect(() => {
+    if (isRunning) {
       timer = setInterval(() => {
-        setSeconds((prevSeconds) => {
-          if (prevSeconds === 59) {
-            // Se os segundos chegarem a 59, incrementar minutos e resetar segundos
-            setMinutes((prevMinutes) => prevMinutes + 1);
+        setSegundos((segundoAnterior) => {
+          if (segundoAnterior === 59) {
+            setMinutos((minutoAnterior) => {
+              if (minutoAnterior === 59) {
+                setHoras((horaAnterior) => horaAnterior + 1);
+                return 0;
+              } else {
+                return minutoAnterior + 1;
+              }
+            });
             return 0;
           } else {
-            return prevSeconds + 1;
+            return segundoAnterior + 1;
           }
         });
-      }, 1000); 
+      }, 1000);
+    } else {
+      clearInterval(timer);
     }
-  }
 
-  function reiniciarCronometro() {
-    clearInterval(timer); // Limpa o intervalo
-    setMinutes(0); // Reinicia os minutos
-    setSeconds(0); // Reinicia os segundos
-    timer = null; // Reseta a variável do timer
-  }
+    return () => clearInterval(timer);
+  }, [isRunning]);
+
 
   let [fontsLoaded] = useFonts({
     Orbitron_400Regular,
@@ -39,19 +45,42 @@ export default function App() {
     return null;
   }
 
+  function iniciarCronometro() {
+    setIsRunning(true);
+  }
+
+  function pararCronometro() {
+    setIsRunning(false);
+  }
+
+  function reiniciarCronometro() {
+    setUltimosTempos(
+      `${horas < 10 ? `0${horas}` : horas}:${minutos < 10 ? `0${minutos}` : minutos}:${segundos < 10 ? `0${segundos}` : segundos}`
+    );
+    clearInterval(timer);
+    setIsRunning(false);
+    setHoras(0);
+    setMinutos(0);
+    setSegundos(0);
+    setIsRunning(true);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={{ fontFamily: 'Orbitron_400Regular', fontSize: 50, color: '#36BA01' }}>
-        {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+        {`${horas < 10 ? `0${horas}` : horas}:${minutos < 10 ? `0${minutos}` : minutos}:${segundos < 10 ? `0${segundos}` : segundos}`}
       </Text>
       <View style={styles.botoes}>
-        <TouchableOpacity style={styles.botao} onPress={iniciarCronometro}>
-          <Text style={styles.textoBotao}>Iniciar</Text>
+        <TouchableOpacity style={styles.botao} onPress={isRunning ? pararCronometro : iniciarCronometro}>
+          <Text style={styles.textoBotao}>{isRunning ? 'Parar' : 'Iniciar'}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.botao} onPress={reiniciarCronometro}>
           <Text style={styles.textoBotao}>Reiniciar</Text>
         </TouchableOpacity>
       </View>
+      <Text style={{ fontFamily: 'Orbitron_400Regular', fontSize: 20, color: '#36BA01', marginTop: 30 }}>
+        {`Último tempo: ${ultimosTempos}`}
+      </Text>
     </View>
   );
 }
@@ -87,11 +116,5 @@ const styles = StyleSheet.create({
     color: '#000',
     fontWeight: 'bold',
     alignSelf: 'center',
-  },
-
-  textao: {
-    fontFamily: 'Orbitron_400Regular',
-    cor: 'white',
-    fontSize: 19,
   },
 });
