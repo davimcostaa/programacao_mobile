@@ -78,7 +78,7 @@ export default function App() {
           <Text style={styles.textoBotao}>Reiniciar</Text>
         </TouchableOpacity>
       </View>
-      <Text style={{ fontFamily: 'Orbitron_400Regular', fontSize: 20, color: '#36BA01', marginTop: 30 }}>
+      <Text style={{ fontFamily: 'Orbitron_400Regular', fontSize: 20, color: '#36BA01', marginTop: 35 }}>
         {`Último tempo: ${ultimosTempos}`}
       </Text>
     </View>
