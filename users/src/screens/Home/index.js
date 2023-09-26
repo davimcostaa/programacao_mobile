@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 import Api from '../../services/Api'
 import { Avatar, Card, IconButton } from 'react-native-paper';
 import { FlatList, StyleSheet, View } from 'react-native'
+import CardUsuario from './Card';
 
-const Home = () => {
+const Home = ({ navigation, route }) => {
 
     const [usuarios, setUsuarios] = useState([])
 
@@ -20,7 +21,6 @@ const Home = () => {
 
     }, [])
 
-    console.log(usuarios)
     return (
         <View style={styles.container}>
 
@@ -29,15 +29,15 @@ const Home = () => {
             showsVerticalScrollIndicator={false}
             data={usuarios}
             renderItem={({ item }) => 
-                <Card.Title
-                style={{backgroundColor: '#665a6f', marginTop: 10}}
-                title={`${item.firstName} ${item.lastName}`}
-                titleStyle={{color: '#fff'}}
-                subtitle="Card Subtitle"
-                left={() => <Avatar.Image size={45} source={{ uri: item.image }} />}
-                right={() => <Avatar.Icon icon="arrow-right" />}
+               <CardUsuario 
+                    nome={item.firstName}
+                    sobrenome={item.lastName}
+                    imagem={item.image}  
+                    navigation={navigation}  
+                    user={item.id}
+                />
               
-          />}
+          }
         />
 
     </View>
