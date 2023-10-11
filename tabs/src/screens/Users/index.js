@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Avatar, Card, IconButton } from 'react-native-paper'
-import { FlatList, ScrollView, Text, View } from 'react-native';
+import { FlatList, ScrollView, Text, View, StyleSheet } from 'react-native';
 import Api from '../../services/Api'
 
 const Users = () => {
@@ -15,12 +15,12 @@ const Users = () => {
           console.log(error)
         })
     }, [])
-console.log(users)
+
   return (
     <>
         <ScrollView>
         {users.map((item) => (
-             <Card key={item.id}>
+             <Card key={item.id} style={styles.card}>
                 <Card.Title
                     title={item.username}
                     subtitle={item.email}
@@ -37,3 +37,9 @@ console.log(users)
 }
 
 export default Users
+
+const styles = StyleSheet.create({
+  card: {
+    marginBottom: 25 
+  }
+})
