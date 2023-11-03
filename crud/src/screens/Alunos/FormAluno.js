@@ -24,12 +24,13 @@ export default function FormAluno({ navigation, route }) {
     }, [])
 
     function salvar() {
+
         if (nome === '' || matricula === '' || turno === '' || curso === '') {
             setShowMensagemErro(true)
         } else {
             setShowMensagemErro(false)
 
-            const novoAluno = {
+            const alunoNovo = {
                 nome: nome,
                 matricula: matricula,
                 turno: turno,
@@ -37,18 +38,21 @@ export default function FormAluno({ navigation, route }) {
             }
 
             if (alunoAntigo) {
-                acao(alunoAntigo, novoAluno)
+                acao(alunoAntigo, alunoNovo)
             } else {
-                acao(novoAluno)
+                acao(alunoNovo)
             }
+
+
 
             Toast.show({
                 type: 'success',
-                text1: 'Aluno salvo com sucesso!'
+                text1: 'Pessoa salva com sucesso!'
             })
 
             navigation.goBack()
         }
+
     }
 
     return (

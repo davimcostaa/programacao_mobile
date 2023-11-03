@@ -1,52 +1,56 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import { Button, Card, FAB, MD3Colors, Text } from 'react-native-paper'
 import Toast from 'react-native-toast-message'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 export default function ListaAlunos({ navigation }) {
 
-  const [alunos, setAlunos] = useState([
-    {
-      nome: 'João Paulo',
-      matricula: '252334244',
-      turno: 'Matutino',
-      curso: 'ADS'
-    },
-    {
-      nome: 'Jorge Luiz',
-      matricula: '20',
-      turno: 'Vespertino',
-      curso: 'Matutino'
-    }
-  ])
-
-  function adicionarAluno(aluno) {
-    let novaListaAlunos = alunos
-    novaListaAlunos.push(aluno)
-    setAlunos(novaListaAlunos)
+  const [alunos, setAlunos] = useState([]);
+  
+  useEffect(() => {
+    loadAlunos();
+  }, []);
+  
+  async function loadAlunos() {
+    const response = await AsyncStorage.getItem('alunos');
+    const alunosStorage = response ? JSON.parse(response) : [];
+    setAlunos(alunosStorage);
   }
-
-  function editarAluno(alunoAntigo, novosDados) {
-    
+  
+  
+  async function adicionarAluno(aluno) {
+    let novaListaAlunos = alunos;
+    novaListaAlunos.push(aluno);
+    await AsyncStorage.setItem('alunos', JSON.stringify(novaListaAlunos));
+    setAlunos(novaListaAlunos);
+  }
+  
+  async function editarAluno(alunoAntigo, novosDados) {
+  
     const novaListaAlunos = alunos.map(aluno => {
-     if(aluno === alunoAntigo){
-       return novosDados
-     } else {
-       return aluno
-     }
-   })
-
-    setAlunos(novaListaAlunos)
+      if (aluno === alunoAntigo) {
+        return novosDados;
+      } else {
+        return aluno;
+      }
+    });
+  
+    await AsyncStorage.setItem('alunos', JSON.stringify(novaListaAlunos));
+    setAlunos(novaListaAlunos);
   }
-
-  function excluirAluno(aluno) {
-    const novaListaAluno = alunos.filter(a => a !== aluno)
-    setAlunos(novaListaAluno)
+  
+  async function excluirAluno(aluno) {
+    const novaListaAlunos = alunos.filter(a => a !== aluno);
+    await AsyncStorage.setItem('alunos', JSON.stringify(novaListaAlunos));
+    setAlunos(novaListaAlunos);
     Toast.show({
       type: 'success',
-      text1: 'Aluno excluído com sucesso!'
-    })
+      text1: 'Aluno excluído com sucesso!',
+    });
   }
+  
 
   return (
     <View style={styles.container}>

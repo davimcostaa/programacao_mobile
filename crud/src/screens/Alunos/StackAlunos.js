@@ -13,7 +13,6 @@ export default function StackPessoas() {
         >
 
             <Stack.Screen name='ListaAlunos' component={ListaAlunos} />
-
             <Stack.Screen name='FormAluno' component={FormAluno} />
 
         </Stack.Navigator>
